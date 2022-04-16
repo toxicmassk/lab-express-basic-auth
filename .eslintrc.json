@@ -1,37 +1,18 @@
 {
   "root": true,
-  "extends": "eslint:recommended",
+  "extends": ["eslint:recommended", "plugin:prettier/recommended"],
   "env": {
     "es6": true,
     "node": true
   },
   "parserOptions": {
-    "ecmaVersion": 2019,
-    "sourceType": "script",
+    "ecmaVersion": 2020,
     "ecmaFeatures": {
-      "jsx": true,
       "impliedStrict": false
     }
-},
+  },
   "rules": {
-    "comma-dangle": ["warn", "never"],
-    "func-call-spacing": ["warn", "never"],
-    "keyword-spacing": ["warn",  { "before": true, "after": true }],
-    "no-unused-vars": ["warn"],
-    "no-undef": ["error"],
-    "no-var": ["warn"],
-    "no-param-reassign": ["error"],
-    "no-shadow": ["error"],
-    "no-labels": ["error"],
-    "prefer-arrow-callback": ["warn"],
-    "prefer-const": ["warn"],
-    "quote-props": [ "off" ],
-    "semi": ["warn", "always"],
-    "space-before-function-paren": ["warn", {
-      "anonymous": "never",
-      "named": "never",
-      "asyncArrow": "always"
-    }],
-    "space-before-blocks": ["warn", "always"]
+    "prettier/prettier": ["error", {}, { "usePrettierrc": true }],
+    "no-unused-vars": "off"
   }
 }

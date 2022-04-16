@@ -4,25 +4,30 @@
   "private": true,
   "scripts": {
     "start": "node ./server",
-    "dev": "nodemon ./server"
+    "dev": "nodemon ./server",
+    "dev:debug": "DEBUG=lab-express-basic-auth* npm run dev",
+    "lint": "eslint ."
   },
   "dependencies": {
-    "debug": "^2.6.9",
-    "dotenv": "^8.1.0",
-    "express": "^4.17.1",
-    "hbs": "^4.0.4",
-    "http-errors": "^1.7.3",
-    "mongoose": "^=5.6.13",
-    "morgan": "^1.9.1",
-    "node-sass-middleware": "0.11.0",
+    "debug": "^4.3.4",
+    "dotenv": "^16.0.0",
+    "express": "^4.17.3",
+    "hbs": "^4.2.0",
+    "http-errors": "^2.0.0",
+    "mongoose": "^6.2.11",
+    "morgan": "^1.10.0",
+    "node-sass-middleware": "^1.0.1",
     "serve-favicon": "^2.5.0"
   },
   "devDependencies": {
-    "eslint": "^=6.3.0",
-    "eslint-plugin-import": "^=2.18.2",
-    "eslint-plugin-node": "^=0.0.0",
-    "eslint-plugin-promise": "^=4.2.1",
-    "mocha": "^6.2.0",
-    "nodemon": "^1.19.2"
+    "mocha": "^9.2.2",
+    "nodemon": "^2.0.15",
+    "eslint": "^8.13.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-promise": "^6.0.0",
+    "prettier": "^2.6.2"
   }
 }

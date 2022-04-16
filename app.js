@@ -1,34 +1,35 @@
-const { join } = require('path');
+'use strict';
+
+const path = require('path');
 const express = require('express');
 const createError = require('http-errors');
 const logger = require('morgan');
 const sassMiddleware = require('node-sass-middleware');
 const serveFavicon = require('serve-favicon');
-
-const indexRouter = require('./routes/index');
+const baseRouter = require('./routes/base');
 
 const app = express();
 
-// Setup view engine
-app.set('views', join(__dirname, 'views'));
+app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
 
-app.use(express.static(join(__dirname, 'public')));
-app.use(serveFavicon(join(__dirname, 'public/images', 'favicon.ico')));
-
-app.use(logger('dev'));
-app.use(express.urlencoded({ extended: false }));
+app.use(serveFavicon(path.join(__dirname, 'public/images', 'favicon.ico')));
 app.use(
   sassMiddleware({
-    src: join(__dirname, 'public'),
-    dest: join(__dirname, 'public'),
-    outputStyle: process.env.NODE_ENV === 'development' ? 'nested' : 'compressed',
+    src: path.join(__dirname, 'public/styles'),
+    dest: path.join(__dirname, 'public/styles'),
+    prefix: '/styles',
+    outputStyle:
+      process.env.NODE_ENV === 'development' ? 'expanded' : 'compressed',
     force: process.env.NODE_ENV === 'development',
-    sourceMap: true
+    sourceMap: process.env.NODE_ENV === 'development'
   })
 );
+app.use(express.static(path.join(__dirname, 'public')));
+app.use(logger('dev'));
+app.use(express.urlencoded({ extended: true }));
 
-app.use('/', indexRouter);
+app.use('/', baseRouter);
 
 // Catch missing routes and forward to error handler
 app.use((req, res, next) => {
@@ -40,7 +41,6 @@ app.use((error, req, res, next) => {
   // Set error information, with stack only available in development
   res.locals.message = error.message;
   res.locals.error = req.app.get('env') === 'development' ? error : {};
-
   res.status(error.status || 500);
   res.render('error');
 });

@@ -35,6 +35,8 @@ After forking and cloning the project, you have to install all the dependencies:
 $ npm install
 ```
 
+In the next few iterations, you'll have to install a few packages manually, such as `bcryptjs`, `express-session` and `connect-mongo`.
+
 Now you are ready to start 🚀
 
 ## Iteration 1 - Sign Up
@@ -42,7 +44,7 @@ Now you are ready to start 🚀
 We have to create the sign up functionality of the application, that allows new users to create an account. The users have to provide the following information:
 
 - **Username**: Must be unique in our application, and will identify each user.
-- **Password**: Must be hashed, using `bcrypt`.
+- **Password**: Must be hashed, using `bcryptjs`.
 
 To complete this first iteration, you have to create the `User` model with mongoose, the routes, and the views.
 
