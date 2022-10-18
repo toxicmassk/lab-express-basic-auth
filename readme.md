@@ -61,7 +61,15 @@ Once the user has logged in, you have to create a session with `express-session`
 
 Again, we have to check out that the fields are correctly filled before try to authenticate them.
 
-## Iteration 3 - Protected Routes
+## Iteration 3 - Frontend validations
+
+Let's add validations to our forms. Remember we have two different forms: sign up and log in.
+
+Remember, when a user signs up or logs in, both the username and password fields must be filled in.
+
+Check out the [documentation](https://developer.mozilla.org/en-US/docs/Learn/HTML/Forms/Data_form_validation) on MDN. See if you can find a _constraint_ that requires the user to fill a field prior to submission.
+
+## Iteration 4 - Protected Routes
 
 At this point, we have implemented basic authentication features. Now, we have to create some routes that are protected, meaning that users can't visit these routes unless they're authenticated.
 
@@ -71,14 +79,6 @@ Let's create two different routes protected by authentication:
 - GET `/private` - Add your favorite `gif` and an `<h1>` denoting the page as private.
 
 Create the views and add the middleware configuration to avoid accessing these routes without being authenticated.
-
-## Bonus - Iteration 4 - Frontend validations
-
-Let's add validations to our forms. Remember we have two different forms: sign up and log in.
-
-Remember, when a user signs up or logs in, both the username and password fields must be filled in.
-
-Check out the [documentation](https://developer.mozilla.org/en-US/docs/Learn/HTML/Forms/Data_form_validation) on MDN. See if you can find a _constraint_ that requires the user to fill a field prior to submission.
 
 ## Bonus - Iteration 5 - Profile Page
 
